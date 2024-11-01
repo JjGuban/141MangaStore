@@ -3,13 +3,6 @@
 
 require 'dbConfig.php';
 
-// Create user for registration
-function createUser($username, $email, $password) {
-    global $pdo;
-    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-    $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-    $stmt->execute([trim($username), trim($email), $passwordHash]);
-}
 
 // Get user by username for login validation
 function getUserByUsername($username) {
